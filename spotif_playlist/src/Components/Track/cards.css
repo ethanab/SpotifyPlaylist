@@ -1,0 +1,29 @@
+.cards-container{
+    display: flex;
+    max-width: 500px;
+    align-items: center;
+    height: fit-content;
+    background-color: #2b2b2b;
+    border: 2px #1ed760;
+    border-radius: 0.25rem;
+    margin-left: 30px;
+    margin-top: 20px;
+
+    
+    
+}
+
+.album-text{
+    margin-left: 100px;
+    color: white;
+    font-family: "Poppins";
+}
+
+.title{
+    font-size:20px;
+}
+
+.image-album{
+    height: 100px;
+    width:auto
+}
