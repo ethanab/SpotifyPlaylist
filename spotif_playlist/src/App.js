@@ -12,8 +12,7 @@ const CLIENT_SECRET = '70f13b0ea82c49e09acc407fba3f9c10'
 
 function App() {
   const [accessToken, setAccessToken] = useState('');
-  const [title, setTitle] = useState('');
-  const {image, setImage}= useState('');
+ const [results, setResults] = useState('');
  
   
 
@@ -31,24 +30,24 @@ function App() {
     .then(data => setAccessToken(data.access_token))
      
   }, [])
-  console.log(accessToken)
  
   async function search(searchInput) {
     console.log("search for " + searchInput )
 
     var searchParameters = {
-      method:'GET',
-      header: {
-        'Content-Type' : 'application/json',
-        'Authorization': 'Bearer ' + accessToken
-      },
+        method: "GET", 
+        headers: { Authorization: `Bearer ${accessToken}`},
     }
     console.log(searchParameters)
 
-    var trackID = await fetch('https://api.spotify.com/v1/search?q=' + searchInput + '&type=track', searchParameters)
+    var trackID = await fetch('https://api.spotify.com/v1/search?q=' + searchInput + '&type=track&limit=10', searchParameters)
     .then(response => response.json())
-    .then(data => console.log(data))
-   }
+    .then(data => setResults(data.tracks))
+   };
+
+   console.log(results)
+
+
 
 
   return (
@@ -61,9 +60,16 @@ function App() {
      </div>
     <div>
 
-      <Cards 
-      title={title}
-      image={image}/>
+  {Object.keys(results).map((e,i) =>{
+  console.log(e.href);
+return(
+  <Cards
+  title={e["href"]} />
+);
+  }
+  
+  )}
+      
     </div>
     
     </div>
@@ -75,3 +81,5 @@ export default App;
 
 
 //
+
+
