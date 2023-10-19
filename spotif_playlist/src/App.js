@@ -30,6 +30,8 @@ function App() {
     .then(data => setAccessToken(data.access_token))
      
   }, [])
+
+  //FUNCTION SEARCH VIA API
  
   async function search(searchInput) {
     console.log("search for " + searchInput )
@@ -61,10 +63,10 @@ function App() {
     <div>
 
   {Object.keys(results).map((e,i) =>{
-  console.log(e.href);
+  console.log(e)
 return(
   <Cards
-  title={e["href"]} />
+  title={e} />
 );
   }
   
