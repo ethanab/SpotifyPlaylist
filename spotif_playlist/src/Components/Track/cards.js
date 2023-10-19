@@ -19,11 +19,11 @@ const addToPlaylist = () =>{
                 <div className='artist-album'>{arr.artist}|{arr.album}</div>
             </div>
             <div className='addbutton-container'>
-                <button className='add-button'>
-                    <AiFillPlusCircle style={{color:'white', height:"30px", backgroundColor:'rgb(0,0,0,0)'}} onClick={addToPlaylist} />
+              
+                    <AiFillPlusCircle className='card_button-plus' onClick={addToPlaylist} />
 
                     
-                </button>
+              
             </div>
 
         </div>

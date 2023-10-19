@@ -5,8 +5,8 @@
     height: fit-content;
     background-color: #2b2b2b;
     border: 2px #1ed760;
-    border-radius: 0.25rem;
-    margin-left: 30px;
+    border-radius: 0.5rem;
+    margin-left: 100px;
     margin-top: 20px;
 
     
@@ -26,4 +26,15 @@
 .image-album{
     height: 100px;
     width:auto
+}
+
+.card_button-plus{
+    font-size:30px;
+    margin-left:100px;
+    color: white;
+}
+
+.card_button-plus:hover{
+    color:#1ed760;
+    cursor: pointer;
 }

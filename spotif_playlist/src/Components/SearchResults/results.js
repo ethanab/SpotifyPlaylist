@@ -1,36 +1,34 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 
 
 
-function Results (userInput){
+const CLIENT_ID = 'e75f719be4ab432e993fd4ea651ebd59'
+const CLIENT_SECRET = '70f13b0ea82c49e09acc407fba3f9c10'
 
-    // Authorization token that must have been created previously. See : https://developer.spotify.com/documentation/web-api/concepts/authorization
-const token = 'undefined';
-async function fetchWebApi(endpoint, method, body) {
-  const res = await fetch(`https://api.spotify.com/${endpoint}`, {
+
+
+function Results (userInput, accessToken){
+
+ async function search() {
+
+
+  var searchParameters ={
+    method:'GET',
     headers: {
-      Authorization: `Bearer ${token}`,
+      'Authorization': 'Bearer'+ ' '+ accessToken
     },
-    method,
-    body:JSON.stringify(body)
-  });
-  return await res.json();
-}
+  }
+  const endpoint = 'https://api.spotify.com/v1/search?q='
 
-async function getTopTracks(){
-  // Endpoint reference : https://developer.spotify.com/documentation/web-api/reference/get-users-top-artists-and-tracks
-  return (await fetchWebApi(
-    'v1/me/top/tracks?time_range=short_term&limit=5', 'GET'
-  )).items;
-}
+  fetch(endpoint + userInput + '&type=track', searchParameters)
+  .then(results => results.json())
+  .then(data => console.log(data))
+  
 
-const topTracks = await getTopTracks();
-console.log(
-  topTracks?.map(
-    ({name, artists}) =>
-      `${name} by ${artists.map(artist => artist.name).join(', ')}`
-  )
-);
+ }
+  
+    
+   
 
 };
 

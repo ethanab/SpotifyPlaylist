@@ -45,6 +45,7 @@
     color:#1ed760;
     font-family: "Poppins";
     font-size: 40px;
+    font-weight: 600;
 }
 
 .container-button{
@@ -70,4 +71,5 @@
 }
 .submit-button:hover{
     background-color: #87c89d;
+    cursor: pointer;
 }

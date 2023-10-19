@@ -4,23 +4,22 @@ import styles from './SearchBar.css'
 
 
 
-function SearchBar ({title}){
+function SearchBar(props){
 
-    const [search, setSearch] = useState('');
+const[searchInput, setSearchInput] = useState('');
 
+const handleChange = (event) =>{
+    setSearchInput(event.target.value);
+};
 
-    const handleInput = (e) =>{
-        setSearch(e.target.value);
-    };
-
-    const handleSubmit = (e) =>{
-        
-
-    };
+const handleSubmit = (e) =>{
+    props.search(searchInput);
+    e.preventDefault();
+}
 
     return (
         <div className='container'>
-        <form>
+        <form onSubmit={handleSubmit} >
             <div>
         <label htmlFor='searchbar'>
             <span className='searchbar-label-grey'>Rechercher sur</span><span className='searchbar-label-yellow'> Spotify</span>
@@ -30,13 +29,13 @@ function SearchBar ({title}){
         <input
           id="searchbar"
           type="text"
-          value={search}
-          onChange={handleInput}
          className='input'
+         value={searchInput}
+         onChange={handleChange}
         />
         </div>
         <div className='container-button'>
-            <button type='submit' onSubmit={handleSubmit} className='submit-button'>Rechercher</button>
+            <input type='submit' className='submit-button' value='Rechercher' />
         </div>
         </form>
         </div>
