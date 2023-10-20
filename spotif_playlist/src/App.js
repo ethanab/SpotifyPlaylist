@@ -40,14 +40,14 @@ function App() {
         method: "GET", 
         headers: { Authorization: `Bearer ${accessToken}`},
     }
-    console.log(searchParameters)
 
     var trackID = await fetch('https://api.spotify.com/v1/search?q=' + searchInput + '&type=track&limit=10', searchParameters)
     .then(response => response.json())
-    .then(data => setResults(data.tracks))
+    .then(data => {setResults(data.tracks.items)})
    };
 
-   console.log(results)
+   
+   
 
 
 
@@ -62,11 +62,12 @@ function App() {
      </div>
     <div>
 
-  {Object.keys(results).map((e,i) =>{
-  console.log(e)
-return(
+
+  {Object.entries(results).map((e,i) =>{
+    console.log(e)
+    return(
   <Cards
-  title={e} />
+  title={e[1].name} image={e[1].album.images[0]['url']} album={e[1].album.name} artist={e[1].artists[0].name}  key={i} />
 );
   }
   

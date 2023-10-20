@@ -1,6 +1,6 @@
 .cards-container{
     display: flex;
-    max-width: 500px;
+    max-width: fit-content;
     align-items: center;
     height: fit-content;
     background-color: #2b2b2b;
@@ -14,7 +14,7 @@
 }
 
 .album-text{
-    margin-left: 100px;
+    margin-left: 30px;
     color: white;
     font-family: "Poppins";
 }
@@ -30,11 +30,14 @@
 
 .card_button-plus{
     font-size:30px;
-    margin-left:100px;
     color: white;
 }
 
 .card_button-plus:hover{
     color:#1ed760;
     cursor: pointer;
+}
+
+.artist-album{
+    font-size: 15px;
 }

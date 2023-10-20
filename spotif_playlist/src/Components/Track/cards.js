@@ -16,7 +16,7 @@ const addToPlaylist = () =>{
             <img className='image-album' src={arr.image}/>
             <div className='album-text'>
                 <div className='title'>{arr.title}</div>
-                <div className='artist-album'>{arr.artist}|{arr.album}</div>
+                <div className='artist-album'>{arr.artist} | {arr.album}</div>
             </div>
             <div className='addbutton-container'>
               
