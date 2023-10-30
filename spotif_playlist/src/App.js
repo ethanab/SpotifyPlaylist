@@ -34,7 +34,6 @@ function App() {
   //FUNCTION SEARCH VIA API
  
   async function search(searchInput) {
-    console.log("search for " + searchInput )
 
     var searchParameters = {
         method: "GET", 
@@ -44,9 +43,10 @@ function App() {
     var trackID = await fetch('https://api.spotify.com/v1/search?q=' + searchInput + '&type=track&limit=10', searchParameters)
     .then(response => response.json())
     .then(data => {setResults(data.tracks.items)})
+    
    };
+   console.log(results)
 
-   
    
 
 
@@ -64,16 +64,19 @@ function App() {
 
 
   {Object.entries(results).map((e,i) =>{
-    console.log(e)
+    console.log(e[1].uri)
     return(
   <Cards
   title={e[1].name} image={e[1].album.images[0]['url']} album={e[1].album.name} artist={e[1].artists[0].name}  key={i} />
+  
 );
   }
   
   )}
       
     </div>
+
+    <Player uri="spotify:track:5BbdKBZO0TH0GhfxUfyhL9"/>
     
     </div>
    

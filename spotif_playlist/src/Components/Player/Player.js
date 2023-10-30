@@ -1,30 +1,41 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './Player.css'
 
 
+
+
+
   
 
-function Player (title) {
-  
+function Player(uri) {
 
-    return(
-        <div>
-        <div class="episodes">
-    <button class="episode" data-spotify-id="spotify:episode:7makk4oTQel546B0PZlDM5">
-      My Path to Spotify: Women in Engineering
-    </button>
-    <button class="episode" data-spotify-id="spotify:episode:43cbJh4ccRD7lzM2730YK3">
-      What is Backstage?
-    </button>
-    <button class="episode" data-spotify-id="spotify:episode:6I3ZzCxRhRkNqnQNo8AZPV">
-      Introducing Nerd Out@Spotify
-    </button>
-  </div>
+const [src, setSrc] = useState('');
 
-  <div id="embed-iframe"></div>
+  async function Embed(uri) {
+    
+
+    var searchParameters = {
+        method: "GET", 
+        headers: {'url':{uri}},
+    }
+
+     await fetch('https://open.spotify.com/oembed?url=' + uri, searchParameters)
+    .then(response => response.json())
+    .then(data => {console.log(data.tracks.items)})
+    .then(console.log(src))
+   };
+ 
   
-  </div>
-    )
+  
+  return(
+    <div className='player-container'>
+   
+    <iframe  src={src} >
+    </iframe>
+    </div>
+
+  )
+   
 
 };
 
